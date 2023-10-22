@@ -1,46 +1,38 @@
-<style>
-  body {
-    width: 400px;
-    height: 400px;
-    background-color: dodgerblue;
-  }
-</style>
-
-<style>
-  .button {
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
+<!--<!DOCTYPE html>-->
+<head>
   
-  .theList {
-    background-color: rgb(255, 162, 0); 
-    color: white; 
-    /*border: 2px solid #4CAF50;*/
-  }
-  
-  .theList:hover {
-    background-color: rgb(255, 206, 122);
-    color: white;
-  }
-  </style>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
 
 
 <html>
+  <head>
+    
+    <link rel="stylesheet" type="text/css" href="popup.css">
+  </head>
   <body>
-    <h1 style="background-color:DodgerBlue;">Hello World</h1>
-      <h1 style = "background-color:white;">Micro-plastic Sources Found!</h1>
-      <p style = "background-color:white;">We can compile a list in seconds!</p>
-      <img src="images/sadEmoji.jpeg" alt="Sad Emoji">
-      <button class="button theList" type="button">Show me the List!</button>
+    <h1 id="statusHeader">Micro Plastics Found</h1>
+    <p id="gloat">Polyester: Can contribute approx. 6.2 mg of pollution a year</p>
+    <p id="percentPol">By using the equation: (Percentage of polyester) X 15.5 = mg of pollution per wash!</p>
+    <p id="amount">That means up to 155 grams of micro fiber pollutants per year by just one peice of clothing!</p>
+    <p id="stats">Total global: 3 million tons of microplastics released annually</p>
+    <img id="logo"src="images/icon-128.png" alt="Logo Img">
 
-    <script src="popup.js"></script>
+    <p id = "demo"></p>
+    <!--<script src="popup.js" ></script>-->
+
+    <p id = "output"></p>
+    
+    <script>
+      const scrapeProduct = require('./scrapers.cjs');
+      let text = document.getElementById("demo").textContent;
+      console.log(text); 
+      let yearlyPollution = scrapeProduct(text);
+      document.getElementById("output").innerHTML = yearlyPollution;
+    </script>
+
+    
+
+    <script src = "./scrapers.cjs"></script>
   </body>
 </html>
